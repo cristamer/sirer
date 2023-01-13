@@ -30,7 +30,7 @@
       
 
 <form action="./valida/valida_user.php" method="post" class="AjaxForms MainLogin" data-type-form="login" autocomplete="off">
-        <p class="text-center text-muted lead text-uppercase">USER: CORPORACION JSA LLANOS S.A.C.</p>
+        <p class="text-center text-muted lead text-uppercase">ACT: CORPORACION JSA LLANOS S.A.C.</p>
         <div class="form-group">
           <label class="control-label" for="usuario">INGRESA TU DNI</label>
           <input class="form-control" name="dni" id="dni" type="text" required="">
