@@ -5,7 +5,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/logo-vt.svg" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SIREP</title>
+    <title>SIRER</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -30,7 +30,7 @@
       
 
 <form action="./valida/valida_user.php" method="post" class="AjaxForms MainLogin" data-type-form="login" autocomplete="off">
-        <p class="text-center text-muted lead text-uppercase">CORPORACION JSA LLANOS S.A.C.</p>
+        <p class="text-center text-muted lead text-uppercase">ACT: CORPORACION JSA LLANOS S.A.C.</p>
         <div class="form-group">
           <label class="control-label" for="usuario">INGRESA TU DNI</label>
           <input class="form-control" name="dni" id="dni" type="text" required="">
