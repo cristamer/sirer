@@ -18,6 +18,9 @@ $c10=$_POST["documento"];
 $c11=$_POST["kilometraje"];
 $c12=$_POST["observacion"];
 $c13="R";
+$c15=$_POST["placa"];
+$c16=$_POST["gls"];
+$c17=$_POST["proveedor"];
 
 
 $query= "INSERT INTO  ledger(  
@@ -33,7 +36,10 @@ tipo_doc,
 num_doc,
 kilometraje,
 observacion,
-estado
+estado,
+id_unidad,
+id_gls, 
+id_provvedor
 
 ) VALUES (
 '$c2',
@@ -47,7 +53,11 @@ estado
 '$c10',
 '$c11',
 '$c12',
-'$c13'
+'$c13',
+'$c15',
+'$c16',
+'$c17'
+
 )";
 
 /*---create ---*/

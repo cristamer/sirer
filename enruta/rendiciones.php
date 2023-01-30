@@ -200,10 +200,32 @@ overflow:auto;
 <input class="form-control"  type="hidden" id="fechacrea" name="fechacrea" value="<?php echo $hoy ; ?> " readonly>
 
   <div class="form-group" >
-  <label for="fecha_registro">Fecha</label>
+  <label for="fecha_registro">FECHA</label>
   <input type="date" class="form-control" id="fecha_registro" name="fecha_registro">
+
 <br>
-  <label for="kilometraje">Kilometraje</label>
+  <div class="form-group">
+  <label for="placa">PLACA - UNIDAD </label>
+  <select class="custom-select" id="placa" name="placa" name="placa" required>
+
+    <?php 
+      $queryun="SELECT * FROM unidades";
+      $resultun=mysqli_query($conexion, $queryun);
+    ?>
+    <?php while($filasun=mysqli_fetch_assoc($resultun)) { ?>
+      
+    <option value="<?php echo $filasun ['id_vh']?>" >
+      <?php echo $filasun ['vh_placa']  ?>
+    </option>
+    <?php } ?>
+    <option selected value="">  </option>
+  </select>
+</div>
+
+
+
+
+  <label for="kilometraje">KILOMETRAJE</label>
   <input type="text" class="form-control" id="kilometraje" name="kilometraje" placeholder="Ingresa el kilometraje">
 <br>
 
@@ -226,9 +248,14 @@ overflow:auto;
   </select>
 </div>
 
+<br>
+  <label for="gls">GLS - COMBUSTIBLE </label>
+  <input type="number" class="form-control" id="gls" name="gls" placeholder="Ingresa cantidad de  gls">
+<br>
+
 
 <div class="form-group">
-  <label for="tipo_doc">TIPO DE DOC : </label>
+  <label for="tipo_doc">TIPO DE COMPROBANTE : </label>
   <select class="custom-select" id="tipo_doc" name="tipo_doc" >
 
     <?php 
@@ -246,9 +273,34 @@ overflow:auto;
 </div>
 
 
-  <label for="documento">Numero Documento</label>
+  <label for="documento">NUMERO DE COMPROBANTE</label>
   <input type="text" class="form-control" id="documento" name="documento"  placeholder="0001-0000">
 <br>
+
+<div class="form-group">
+  <label for="proveedor">RUC - PROVEEDOR</label>
+  <select class="custom-select" id="proveedor" name="proveedor" >
+
+    <?php 
+      $queryp="SELECT proveedores.id_proveedor, proveedores.cte_nombrecomercial
+FROM proveedores
+ORDER BY proveedores.cte_nombrecomercial;
+";
+      $resultp=mysqli_query($conexion, $queryp);
+    ?>
+    <?php while($filasp=mysqli_fetch_assoc($resultp)) { ?>
+      
+    <option value="<?php echo $filasp ['id_proveedor']?>" >
+      <?php echo $filasp ['cte_nombrecomercial']  ?>
+    </option>
+    <?php } ?>
+    <option selected value="">  </option>
+  </select>
+</div>
+
+
+<br>
+
   <label for="observacion">Observación</label>
   <textarea class="form-control" id="observacion" name="observacion" placeholder="Ingresa Observaciones" rows="2"></textarea>
 <br>
