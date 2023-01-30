@@ -250,7 +250,7 @@ overflow:auto;
 
 <br>
   <label for="gls">GLS - COMBUSTIBLE </label>
-  <input type="number" class="form-control" id="gls" name="gls" placeholder="Ingresa cantidad de  gls">
+  <input type="number" step="0.01" class="form-control" id="gls" name="gls" placeholder="Ingresa cantidad de  gls">
 <br>
 
 
@@ -305,7 +305,7 @@ ORDER BY proveedores.cte_nombrecomercial;
   <textarea class="form-control" id="observacion" name="observacion" placeholder="Ingresa Observaciones" rows="2"></textarea>
 <br>
   <label for="importe">Importe</label>
-  <input type="number" class="form-control" id="importe"  name="importe" placeholder="S/. 0.00">
+  <input type="number" step="0.01" class="form-control" id="importe"  name="importe" placeholder="S/. 0.00">
 
 
 </div>
