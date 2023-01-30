@@ -1,9 +1,17 @@
 <?php include('includes/header.php'); ?>
-
-<link rel="stylesheet" href="stylos/stylos.css">
-<link rel="stylesheet" href="./style.css">
 <?php include('includes/menubar.php'); ?>
+<?php include("../data/conexion.php"); ?>
 
+    <!-- CSS personalizado --> 
+    <link rel="stylesheet" href="main.css">  
+      
+    <!--datables CSS básico-->
+    <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css"/>
+    <!--datables estilo bootstrap 4 CSS-->  
+    <link rel="stylesheet"  type="text/css" href="datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+           
+    <!--font awesome con CDN-->  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">  
 
 
 
@@ -16,10 +24,6 @@
 </div>
 
 
-<?php include('includes/header.php'); ?>
-<?php include("../data/conexion.php"); ?>
-
-
 
 <div class= "tablescroll" > 
 
@@ -30,7 +34,7 @@
 
     
 
-    <table class="scrollable table-bordered " class="table table-sm" width="100%">
+    <table id="example" class="table table-striped table-bordered" class="table table-sm" width="100%">
       <thead class="thead-dark text-center">
         <tr>
         <th scope="col">SALDO</th>
@@ -138,7 +142,25 @@
 </div> 
 
 
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="popper/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+      
+    <!-- datatables JS -->
+    <script type="text/javascript" src="datatables/datatables.min.js"></script>    
+     
+    <!-- para usar botones en datatables JS -->  
+    <script src="datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>  
+    <script src="datatables/JSZip-2.5.0/jszip.min.js"></script>    
+    <script src="datatables/pdfmake-0.1.36/pdfmake.min.js"></script>    
+    <script src="datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+    <script src="datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+     
+    <!-- código JS propìo-->    
+    <script type="text/javascript" src="main.js"></script>  
+    
 
 
-
-<?php include('includes/footer.php'); ?>
+  </body>
+</html>
