@@ -250,7 +250,7 @@ overflow:auto;
 
 <br>
   <label for="gls">GLS - COMBUSTIBLE </label>
-  <input type="number" step="0.01" class="form-control" id="gls" name="gls" placeholder="Ingresa cantidad de  gls">
+  <input type="number" step="any" class="form-control" id="gls" name="gls" placeholder="Ingresa cantidad de  gls">
 <br>
 
 
@@ -274,7 +274,7 @@ overflow:auto;
 
 
   <label for="documento">NUMERO DE COMPROBANTE</label>
-  <input type="text" class="form-control" id="documento" name="documento"  placeholder="0001-0000">
+  <input type="text" class="form-control" id="documento" name="documento"  placeholder="0001-0000" required>
 <br>
 
 <div class="form-group">
@@ -304,8 +304,8 @@ ORDER BY proveedores.cte_nombrecomercial;
   <label for="observacion">Observación</label>
   <textarea class="form-control" id="observacion" name="observacion" placeholder="Ingresa Observaciones" rows="2"></textarea>
 <br>
-  <label for="importe">Importe</label>
-  <input type="number" step="0.01" class="form-control" id="importe"  name="importe" placeholder="S/. 0.00">
+  <label for="importe">IMPORTE</label>
+  <input type="number" step="any" class="form-control" id="importe"  name="importe" placeholder="S/. 0.00">
 
 
 </div>
@@ -416,7 +416,7 @@ WHERE (((ledger.id_responsable)=$id_userup) AND ((ledger.estado)='R') AND ((ledg
   <textarea class="form-control" id="observacion" name="observacion" placeholder="Ingresa Observaciones" rows="2"></textarea>
 <br>
   <label for="salario">Importe</label>
-  <input type="number" class="form-control" id="salario"  name="salario" placeholder="S/. 0.00">
+  <input type="number" step="any" class="form-control" id="salario"  name="salario" placeholder="S/. 0.00">
 
 </div>
 
