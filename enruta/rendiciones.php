@@ -207,7 +207,7 @@ overflow:auto;
   <div class="form-group">
   <label for="placa">PLACA - UNIDAD </label>
   <select class="custom-select" id="placa" name="placa" name="placa" required>
-
+ <option >  </option>
     <?php 
       $queryun="SELECT * FROM unidades";
       $resultun=mysqli_query($conexion, $queryun);
@@ -218,7 +218,7 @@ overflow:auto;
       <?php echo $filasun ['vh_placa']  ?>
     </option>
     <?php } ?>
-    <option selected value="">  </option>
+    
   </select>
 </div>
 
@@ -233,7 +233,7 @@ overflow:auto;
 <div class="form-group">
   <label for="Concepto">COMCEPTO : </label>
   <select class="custom-select" id="Concepto" name="Concepto" name="Concepto" required>
-
+<option >  </option>
     <?php 
       $query2="SELECT *FROM rend_conceptos WHERE id_concepto > 2";
       $result2=mysqli_query($conexion, $query2);
@@ -244,7 +244,7 @@ overflow:auto;
       <?php echo $filas2 ['concepto']  ?>
     </option>
     <?php } ?>
-    <option selected value="">  </option>
+
   </select>
 </div>
 
@@ -257,7 +257,7 @@ overflow:auto;
 <div class="form-group">
   <label for="tipo_doc">TIPO DE COMPROBANTE : </label>
   <select class="custom-select" id="tipo_doc" name="tipo_doc" required>
-
+<option >  </option>
     <?php 
       $queryT="SELECT * FROM tipo_doc ";
       $resultT=mysqli_query($conexion, $queryT);
@@ -268,7 +268,7 @@ overflow:auto;
       <?php echo $filasT ['name_doc']  ?>
     </option>
     <?php } ?>
-    <option selected value="">  </option>
+
   </select>
 </div>
 
@@ -280,7 +280,7 @@ overflow:auto;
 <div class="form-group">
   <label for="proveedor">RUC - PROVEEDOR</label>
   <select class="custom-select" id="proveedor" name="proveedor" required >
-
+<option >  </option>
     <?php 
       $queryp="SELECT proveedores.id_proveedor, proveedores.cte_nombrecomercial
 FROM proveedores
@@ -294,7 +294,7 @@ ORDER BY proveedores.cte_nombrecomercial;
       <?php echo $filasp ['cte_nombrecomercial']  ?>
     </option>
     <?php } ?>
-    <option selected value="">  </option>
+
   </select>
 </div>
 
