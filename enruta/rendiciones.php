@@ -201,7 +201,7 @@ overflow:auto;
 
   <div class="form-group" >
   <label for="fecha_registro">FECHA</label>
-  <input type="date" class="form-control" id="fecha_registro" name="fecha_registro">
+  <input type="date" class="form-control" id="fecha_registro" name="fecha_registro" required>
 
 <br>
   <div class="form-group">
@@ -256,7 +256,7 @@ overflow:auto;
 
 <div class="form-group">
   <label for="tipo_doc">TIPO DE COMPROBANTE : </label>
-  <select class="custom-select" id="tipo_doc" name="tipo_doc" >
+  <select class="custom-select" id="tipo_doc" name="tipo_doc" required>
 
     <?php 
       $queryT="SELECT * FROM tipo_doc ";
@@ -279,7 +279,7 @@ overflow:auto;
 
 <div class="form-group">
   <label for="proveedor">RUC - PROVEEDOR</label>
-  <select class="custom-select" id="proveedor" name="proveedor" >
+  <select class="custom-select" id="proveedor" name="proveedor" required >
 
     <?php 
       $queryp="SELECT proveedores.id_proveedor, proveedores.cte_nombrecomercial
@@ -305,7 +305,7 @@ ORDER BY proveedores.cte_nombrecomercial;
   <textarea class="form-control" id="observacion" name="observacion" placeholder="Ingresa Observaciones" rows="2"></textarea>
 <br>
   <label for="importe">IMPORTE</label>
-  <input type="number" step="any" class="form-control" id="importe"  name="importe" placeholder="S/. 0.00">
+  <input type="number" step="any" class="form-control" id="importe"  name="importe" placeholder="S/. 0.00" required>
 
 
 </div>
