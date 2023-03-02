@@ -56,7 +56,7 @@ filter: brightness(80%);
 
         <a href="head_print.php" class="btn btn-primary btn-lg btn-block">RESUMEN</a>
         
-        <a href="prog_histotico.php" class="btn btn-primary btn-lg btn-block">HISTORICO</a>
+        <a href="asistencia.php" class="btn btn-primary btn-lg btn-block">ASISTENCIAS</a>
 
         <a href="envio_fondos.php" class="btn btn-primary btn-lg btn-block">RENDICIONES</a>
         
