@@ -88,8 +88,8 @@ padding-right: 100px;
 
 <div class="card text-center">
   <div class="card-header text-center">
-    <span class="icon-truck"></span> <br>
-    <B> <h4 class="text-center"> ENTREGAS A RENDIR </h4> </B>
+    <span class="icon-users"></span> <br>
+    <B> <h4 class="text-center"> ASISTENCIA</h4> </B>
   </div>
 
 </div>
@@ -100,40 +100,17 @@ padding-right: 100px;
 
 <div class="container">
   <div class="row">
-    <div class="col-sm col-1">
+
+    <div class="col-sm  ">
+      <a href="#ASISTENCIA" class="btn btn-block btn-primary " data-toggle="modal">  REGISTRAR ASISTENCIA    </a>
       
     </div>
-    <div class="col-sm col-5 ">
-      <a href="#RENDIR" class="btn btn-block btn-primary " data-toggle="modal">  A RENDIR     </a>
-      
-    </div>
-    <div class="col-sm col-5 ">
-      <a href="#ASUELDO" class="btn btn-block btn-success " data-toggle="modal">  ADELANTO     </a>
-    </div>
-        <div class="col-sm col-1">
-      
-    </div>
+
+
   </div>
 </div>
 
 <br>
-
-      <?php
-           $query2=" SELECT * FROM totalenviooy  ";
-           $result2=mysqli_query($conexion, $query2);
-           $filas2=mysqli_fetch_assoc($result2)
-      ?>
-
-      <div>
-
-        <div class="card" >
-        <div class="card-header text-right">
-      TOTAL A RENDIR DEL DIA = S/. <?php echo $filas2 ['SumaDeimporte'] ; ?>  </div>
-
-      </div>
-
-      </div>
-
 
 
 <div class= "tablescroll" > 
@@ -148,7 +125,7 @@ padding-right: 100px;
     <table id="example" class="table table-sm" width="100%">
       <thead class=" text-center">
         <tr>
-        <th scope="col">RENDICIONES</th>
+        <th scope="col">LISTA DE ASISTETES </th>
 
       
         </tr>
@@ -237,11 +214,11 @@ ORDER BY usuarios.user_nick;
  <!-- formulrio nuevo envio de sueldos-->
 
 
-<div class="modal" tabindex="-1" role="dialog" id="ASUELDO">
+<div class="modal" tabindex="-1" role="dialog" id="ASISTENCIA">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">ADELANTO DE SUELDO</h5>
+        <h5 class="modal-title">REGISTRO DE ASISTENCIA</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -298,74 +275,6 @@ ORDER BY usuarios.user_nick;
     </div>
   </div>
 </div>
-
-
- <!-- formulrio nuevo envio de fondos-->
-
-<div class="modal" tabindex="-1" role="dialog" id="RENDIR">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">NUEVA ENTREGA A RENDIR </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-  
-<form  action="crud_envio/create.php" method="POST" enctype="multipart/form-data" class="colm">
-
-<input class="form-control"  type="hidden" id="id_user" name="id_user" value="<?php echo $id_userup ; ?> " readonly>
-<input class="form-control"  type="hidden" id="fechacrea" name="fechacrea" value="<?php echo $hoy ; ?> " readonly>
-
-  <div class="form-group" >
-  
-  <label for="fecha_registro">Fecha</label>
-  <input type="date" class="form-control" id="fecha_registro" name="fecha_registro">
-<br>
-
-
-  <label for="id_responsable">EMPLEADO</label>
-   <select class="custom-select" id="id_responsable" name="id_responsable" required >
-<option >  </option>
-    <?php 
-      $queryp="SELECT usuarios.id_user, usuarios.user_nick
-FROM usuarios
-ORDER BY usuarios.user_nick;
-";
-      $resultp=mysqli_query($conexion, $queryp);
-    ?>
-    <?php while($filasp=mysqli_fetch_assoc($resultp)) { ?>
-      
-    <option value="<?php echo $filasp ['id_user']?>" >
-      <?php echo $filasp ['user_nick']  ?>
-    </option>
-    <?php } ?>
-
-  </select>
-<br>
-
-  <label for="observacion">Observación</label>
-  <textarea class="form-control" id="observacion" name="observacion" placeholder="Ingresa Observaciones" rows="2"></textarea>
-<br>
-  <label for="importe">Importe</label>
-  <input type="number" step="any" class="form-control" id="importe"  name="importe" placeholder="S/. 0.00">
-
-</div>
-
-
-      </div>
-      <div class="modal-footer">
-      <button type="submit" class="btn btn-primary btn-lg btn-block" id="guardar" name="guardar">ENVIAR </button>
-</form>
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
 
 
 

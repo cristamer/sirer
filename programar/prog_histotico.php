@@ -43,15 +43,6 @@ FROM (((((((programaciones INNER JOIN cuentas ON programaciones.id_cta = cuentas
 ?>
 
 
-
-
-
-
-
-
-
-
-
      
     <!--Ejemplo tabla con DataTables-->
     <div class="container">
@@ -156,6 +147,7 @@ FROM (((((((programaciones INNER JOIN cuentas ON programaciones.id_cta = cuentas
     <!-- código JS propìo-->    
     <script type="text/javascript" src="main.js"></script>  
     
+
     
   </body>
 </html>

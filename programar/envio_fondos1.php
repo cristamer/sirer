@@ -14,75 +14,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">  
 
 
-  <style>
-    .contacto {
-      display: flex;
-      align-items: center;
-      margin-bottom: 2px;
-      padding: 10px;
-      border-radius: 10px;
-      background-color: #f0f0f0;
-    }
-
-    .contacto img {
-      border-radius: 50%;
-      height: 50px;
-      width: 50px;
-      margin-right: 10px;
-    }
-
-
-   .btn-importe1 {
-    
-    background: white ;
-     border-radius: 10px;
-     padding-left: 5px;
-     padding-right: 5px;
-    font-size: 12px;
-     margin: 2px;
-     width: 100%;
-     height: 40px ;
-     border: solid #f0f0f0;
-
-    }
-    .btn-importe2 {
-     background: wheat  ;
-     border-radius: 10px;
-     padding-left: 5px;
-     padding-right: 5px;
-     font-size: 12px;
-     margin: 3px;
-     width: 100%;
-     height: 40px 
-    }
-
-
-
-    .caja {
-      width: 100%;
- 
- 
-    }
-
-  .cajabody {
-  width: 100%;
-  display: flex;
-    }
-
-  .valores {
-  width: 100%;
-
- 
-    }
-
-.form-control {
-
-height: calc(1.8125rem + 10px);
-padding-right: 100px;
-
-}
-
-  </style>
 
 
 
@@ -104,11 +35,11 @@ padding-right: 100px;
       
     </div>
     <div class="col-sm col-5 ">
-      <a href="#RENDIR" class="btn btn-block btn-primary " data-toggle="modal">  A RENDIR     </a>
+      <a href="#RENDIR" class="btn btn-block btn-primary " data-toggle="modal">  RENDIR     </a>
       
     </div>
     <div class="col-sm col-5 ">
-      <a href="#ASUELDO" class="btn btn-block btn-success " data-toggle="modal">  ADELANTO     </a>
+      <a href="#ASUELDO" class="btn btn-block btn-success " data-toggle="modal">  SUELDO     </a>
     </div>
         <div class="col-sm col-1">
       
@@ -145,11 +76,14 @@ padding-right: 100px;
 
     
 
-    <table id="example" class="table table-sm" width="100%">
-      <thead class=" text-center">
+    <table id="example" class="table table-striped table-bordered" class="table table-sm" width="100%">
+      <thead class="thead-dark text-center">
         <tr>
-        <th scope="col">RENDICIONES</th>
-
+        <th scope="col">SALDO</th>
+         <th scope="col">A RENDIR</th>
+        <th scope="col">ENVIAR </th>
+        <th scope="col">SALARIO </th>
+        <th scope="col">ENVIAR </th>
       
         </tr>
       </thead>
@@ -159,10 +93,11 @@ padding-right: 100px;
           <?php
 
                $query="
-               SELECT usuarios.user_activo, usuarios.id_user, usuarios.user_avatar, usuarios.user_nombre, usuarios.user_nick, enviooy.SumaDeimporte AS enviooy, rsaldo.rsaldo, salario_xuser.SumaDesalario AS salario, ingreso_xuser.SumaDeimporte AS envios, egreso_xuser.SumaDeimporte AS egresos
-FROM ((((usuarios LEFT JOIN enviooy ON usuarios.id_user = enviooy.id_responsable) LEFT JOIN rsaldo ON usuarios.id_user = rsaldo.id_responsable) LEFT JOIN salario_xuser ON usuarios.id_user = salario_xuser.id_responsable) LEFT JOIN ingreso_xuser ON usuarios.id_user = ingreso_xuser.id_responsable) LEFT JOIN egreso_xuser ON usuarios.id_user = egreso_xuser.id_responsable
-WHERE (((usuarios.user_activo)='si'))
-ORDER BY usuarios.user_nick;
+
+          SELECT usuarios.id_user, usuarios.user_nick, enviooy.SumaDeimporte, rsaldo.rsaldo, salario_xuser.SumaDesalario
+          FROM ((usuarios LEFT JOIN enviooy ON usuarios.id_user = enviooy.id_responsable) LEFT JOIN rsaldo ON usuarios.id_user = rsaldo.id_responsable) LEFT JOIN salario_xuser ON usuarios.id_user = salario_xuser.id_responsable
+          ORDER BY usuarios.user_nick
+
 
 
               ";
@@ -175,42 +110,50 @@ ORDER BY usuarios.user_nick;
 
           <tr>
             
-            <td > 
- 
-  <div class="contacto">
-    <div>
-        <a href="envio_fondosxuser.php?us=<?php echo $filas['id_user']; ?>" >
-        <img src="../panel/<?php echo $filas ['user_avatar'] ; ?>" alt="foto">
-        </a>
-    </div>
-    <div class="caja">
-        <div>
-          <a href="envio_fondosxuser.php?us=<?php echo $filas['id_user']; ?>" > 
-                <span class="icon-user"></span> <?php echo $filas ['user_nick']?> 
-                </a>
-        </div> 
-        <div class="cajabody">
-                <div class="valores">
-                  <label class="btn-importe1" > <span class="icon-plus"></span> <strong>  ENVIOS:</strong>  <br> S/ <?php echo $filas ['envios'] ; ?> </label> 
-                  <label class="btn-importe1">  <span class="icon-minus"></span>  <strong>EGRESOS:</strong> <br>  S/ <?php echo $filas ['egresos'] ; ?></label>
-                  
-                </div>
-                 
-                <div class="valores"> 
-                  <label class="btn-importe1"> <span class="icon-checkmark"></span>  <strong>SALARIO:</strong>  <br> S/ <?php echo $filas ['salario'] ; ?> </label>       
-                  <label class="btn-importe1"> <span class="icon-arrow-right"></span>  <strong>SALDO:</strong> <br>S/ <?php echo $filas ['rsaldo'] ; ?></label>
-                  
-                </div>
-                
-        </div>
-    </div>
-  </div>        
-
-
-
-            </td> 
+            <td class="text-left"> 
+            <a href="envio_fondosxuser.php?us=<?php echo $filas['id_user']; ?>" > 
+            <span class="icon-user"></span> <?php echo $filas ['user_nick']?> </a>
+            <br> S/<?php echo $filas ['rsaldo'] ; ?></td> 
           
+            <td>
+            <form  action="crud_envio/create.php" method="POST" enctype="multipart/form-data">
+            <input class="form-control"  type="hidden" id="fechacrea" name="fechacrea" value="<?php echo $hoy ; ?> " readonly>
+            <input class="form-control"  type="hidden" id="fecha_registro" name="fecha_registro" value="<?php echo $hoy ; ?> " readonly>
+            <input class="form-control"  type="hidden" id="id_user" name="id_user" value="<?php echo $id_userup ; ?> " readonly>
+            <input class="form-control"  type="hidden" id="id_responsable" name="id_responsable" value="<?php echo $filas ['id_user'] ; ?> " readonly>
+            <input class="form-control"  type="hidden" id="observacion" name="observacion" value="" readonly>
+            <input   type="text" class="form-control text-right" id="importe" name="importe" placeholder="S/. 00.00"> 
+
+            <span class="text-right"> + <?php echo $filas ['SumaDeimporte'] ; ?> </span> 
+
+            </td>
+
+            <td class="text-center">
+              <button type="submit" class="btn btn-primary" id="guardar" name="guardar"> Enviar</button>
+            </form>  
+            </td>
             
+
+
+            <td>
+            <form  action="crud_salario/create.php" method="POST" enctype="multipart/form-data">
+            <input class="form-control"  type="hidden" id="fechacrea" name="fechacrea" value="<?php echo $hoy ; ?> " readonly>
+            <input class="form-control"  type="hidden" id="fecha_registro" name="fecha_registro" value="<?php echo $hoy ; ?> " readonly>
+            <input class="form-control"  type="hidden" id="id_user" name="id_user" value="<?php echo $id_userup ; ?> " readonly>
+            <input class="form-control"  type="hidden" id="id_responsable" name="id_responsable" value="<?php echo $filas ['id_user'] ; ?> " readonly>
+            <input class="form-control"  type="hidden" id="observacion" name="observacion" value="" readonly>
+            <input   type="text" class="form-control text-right" id="salario" name="salario" placeholder="S/. 00.00"> 
+            <span class="text-right"> + <?php echo $filas ['SumaDesalario'] ; ?> </span> 
+
+            </td>
+            <td class="text-center">
+              <button type="submit" class="btn btn-success" id="guardar" name="guardar"> Envia</button>
+              
+            </td>
+            </form>
+
+
+
             </tr>
 
 
@@ -241,7 +184,7 @@ ORDER BY usuarios.user_nick;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">ADELANTO DE SUELDO</h5>
+        <h5 class="modal-title">A CUENTA DE SUELDO</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

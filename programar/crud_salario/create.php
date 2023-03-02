@@ -6,8 +6,6 @@
 
 if (isset($_POST['guardar'])) {
 
-
-$c2=$_POST["fecha_registro"];
 $c3=$_POST["fecha_registro"];
 $c4=$_POST["id_user"];
 $c5=2;
@@ -17,14 +15,13 @@ $c8=$_POST["id_responsable"];
 $c9=1;
 $c10=0;
 $c11=0;
-$c12="a cta de salario";
+$c12="a cta de salario" ." / ". $_POST["observacion"];
 $c13="R";
 $c14=$_POST["salario"];
 
 
 $query= "INSERT INTO  ledger(  
 
-fecha_creacion,
 fecha_registro,
 id_user,
 id_concepto,
@@ -39,7 +36,7 @@ estado,
 salario
 
 ) VALUES (
-'$c2',
+
 '$c3',
 '$c4',
 '$c5',

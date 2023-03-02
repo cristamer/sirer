@@ -60,7 +60,7 @@ ORDER BY ledger.id_ledger;
       <th scope="col">FECHA</th>
       <th scope="col">CONCEPTO</th>
       <th scope="col">RENDICIONES</th>
-      <th scope="col">SALARIO</th>
+      <th scope="col">ADELANTOS</th>
      </tr>
   </thead>
   <tbody>
