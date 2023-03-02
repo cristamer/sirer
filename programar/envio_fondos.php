@@ -78,7 +78,7 @@
 .form-control {
 
 height: calc(1.8125rem + 10px);
-padding-right: 100px;
+
 
 }
 
@@ -197,7 +197,7 @@ ORDER BY usuarios.user_nick;
                 </div>
                  
                 <div class="valores"> 
-                  <label class="btn-importe1"> <span class="icon-checkmark"></span>  <strong>SALARIO:</strong>  <br> S/ <?php echo $filas ['salario'] ; ?> </label>       
+                  <label class="btn-importe1"> <span class="icon-checkmark"></span>  <strong>ADELANTOS:</strong>  <br> S/ <?php echo $filas ['salario'] ; ?> </label>       
                   <label class="btn-importe1"> <span class="icon-arrow-right"></span>  <strong>SALDO:</strong> <br>S/ <?php echo $filas ['rsaldo'] ; ?></label>
                   
                 </div>
