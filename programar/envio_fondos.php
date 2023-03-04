@@ -192,7 +192,7 @@ ORDER BY usuarios.user_nick;
         <div class="cajabody">
                 <div class="valores">
                   <label class="btn-importe1" > <span class="icon-plus"></span> <strong>  ENVIOS:</strong>  <br> S/ <?php echo $filas ['envios'] ; ?> </label> 
-                  <label class="btn-importe1">  <span class="icon-minus"></span>  <strong>EGRESOS:</strong> <br>  S/ <?php echo $filas ['egresos'] ; ?></label>
+                  <label class="btn-importe1">  <span class="icon-minus"></span>  <strong>GASTOS:</strong> <br>  S/ <?php echo $filas ['egresos'] ; ?></label>
                   
                 </div>
                  

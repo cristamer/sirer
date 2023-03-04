@@ -30,6 +30,9 @@
             <li class="nav-item active">
         <a class="nav-link" href="envio_fondos.php">RENDICIONES</a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="asistencia.php">ASISTENCIA</a>
+      </li>
 
       <li class="nav-item active">
         <a class="nav-link" href="prog_histotico.php">HISTORICO</a>

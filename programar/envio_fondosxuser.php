@@ -5,6 +5,14 @@
 <?php include('includes/menubar.php'); ?>
 <?php include("../data/conexion.php"); ?>
 
+<style type="text/css">
+  
+  table{
+font-size: 12px;
+  }
+
+</style>
+
 <?php 
 $us = $_GET['us'];
 
@@ -147,6 +155,119 @@ HAVING (((ledger.estado)='R') AND ((ledger.id_responsable)=$us));
     </div>
   </div>
 </div>
+
+
+<br>
+
+<div class="card text-center">
+  <div class="card-header text-center">
+    <B> <h4 class="text-center"> <span class="icon-checkmark"></span>  REGISTRO DE ASISTENCIA </h4> </B> 
+ </div>
+
+</div>
+
+
+<div class= "tablescroll" > 
+
+<div class="container p-3">
+
+      <div class="row" >
+        <div class="col-12" class="colm">
+
+ <?php
+
+     $queryA="
+SELECT asistencias.id_empleado, asistencias.fecha_asist, asistencias.hora_asist, unidades.vh_placa, asistencias.obs_asist, asistencias.salario, asistencias.estado, asistencias.tardanza
+FROM asistencias INNER JOIN unidades ON asistencias.placa_asig = unidades.id_vh
+WHERE (((asistencias.id_empleado)=$us) AND ((asistencias.estado)='R'));
+
+        ";
+     $resultA=mysqli_query($conexion, $queryA);
+ 
+?> 
+
+
+
+<div > 
+
+<table class="scrollable table-bordered" class="table table-sm" width="100%">
+  <thead class="thead-dark text-center ">
+    <tr>
+      <th scope="col">FECHA</th>
+      <th scope="col">PLACA</th>
+      <th scope="col">OBSERV</th>
+      <th scope="col">TARDANZAS</th>
+      <th scope="col">SALARIO</th>
+     </tr>
+  </thead>
+  <tbody>
+
+    <?php while($filasA=mysqli_fetch_assoc($resultA)) { ?>
+
+    <tr>
+      <td class="text-center"><?php echo $filasA['fecha_asist'];?> <br> <?php echo $filasA ['hora_asist'];?> </td>
+      <td><?php echo $filasA ['vh_placa'];?> </td>
+      <td class="text-right"><?php echo $filasA ['obs_asist'];?></td>
+      <td class="text-right"><?php echo $filasA['tardanza'];?></td> 
+      <td class="text-right"><?php echo $filasA['salario'];?></td> 
+    </tr>
+
+<?php }?>
+
+
+
+  </tbody>
+</table>
+ </div>
+
+    </div>
+  </div>
+</div>
+</div> 
+
+
+
+  
+      <?php
+
+
+$querySA="
+SELECT asistencias.id_empleado, Count(asistencias.fecha_asist) AS dias, Sum(asistencias.salario) AS SumaDesalario, asistencias.estado, Sum(asistencias.tardanza) AS tardanzas
+FROM asistencias
+GROUP BY asistencias.id_empleado, asistencias.estado
+HAVING (((asistencias.id_empleado)=$us) AND ((asistencias.estado)='R'));
+
+ ";
+  $resultSA=mysqli_query($conexion, $querySA); 
+  
+      ?>
+
+ 
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+
+<table class="scrollable table-secondary" class="table table-sm" width="100%">
+  <tbody>
+
+
+<?php $filasSA=mysqli_fetch_assoc($resultSA) ?>
+     <th scope="row" class="text-right" >TOTAL</th>
+     <th scope="row" class="text-right"><?php echo $filasSA ['dias'];?> DIAS</th>
+     <th scope="row" class="text-right"><?php echo $filasSA ['tardanzas'];?></th>
+     <th scope="row" class="text-right"><?php echo $filasSA ['SumaDesalario'];?></th>
+</tbody>
+</table>
+
+   
+
+    </div>
+  </div>
+</div>
+
+
 <br><br>
 
 <div class="card">
@@ -159,6 +280,6 @@ HAVING (((ledger.estado)='R') AND ((ledger.id_responsable)=$us));
   </div>
 </div>
 
-<br><br><br>
+
 
 <?php include('includes/footer.php'); ?>

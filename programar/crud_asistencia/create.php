@@ -5,9 +5,9 @@
 /*---NEW ASISTENCIA---*/
 
 if (isset($_POST['guardar'])) {
- $usuario = $_POST["id_user"];
+ $usuario = $_POST["id_responsable"];
 
-      $queryp="SELECT usuarios.id_user, usuarios.user_salario
+      $queryp="SELECT usuarios.id_user, usuarios.user_salario, usuarios.user_hingreso 
 FROM usuarios
 WHERE (((usuarios.id_user)=$usuario))
 
@@ -15,6 +15,21 @@ WHERE (((usuarios.id_user)=$usuario))
 $resultp=mysqli_query($conexion, $queryp);
 $filasp=mysqli_fetch_assoc($resultp);
 $salario = $filasp ['user_salario'];
+$horaigreso = $filasp['user_hingreso'];
+
+if (strlen($_POST["hora"]) == 5 ) {
+    $horaasiste = $_POST["hora"].':00';
+} else {
+    $horaasiste = $_POST["hora"];
+}
+
+$hora1 = DateTime::createFromFormat('H:i:s', $horaigreso);
+$hora2 = DateTime::createFromFormat('H:i:s', $horaasiste);
+
+
+
+
+$diferencia = $hora1->diff($hora2);
 
 $c2=$_POST["id_user"];
 $c3=$_POST["fechacrea"];
@@ -24,7 +39,7 @@ $c6=$_POST["placa"];
 $c7=$salario;
 $c8=$_POST["observacion"];
 $c9=$_POST["id_responsable"];
-
+$c10=$diferencia->format('%H:%I:%S');
 
 
 $query= "INSERT INTO  asistencias(  
@@ -36,7 +51,8 @@ hora_asist,
 placa_asig,
 salario,
 obs_asist,
-id_empleado
+id_empleado,
+tardanza 
 
 ) VALUES (
 
@@ -47,7 +63,8 @@ id_empleado
 '$c6',
 '$c7',
 '$c8',
-'$c9'
+'$c9',
+'$c10'
 )";
 
 /*---create ---*/
