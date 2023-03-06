@@ -19,6 +19,10 @@ height: calc(1.8125rem + 10px);
 
 
 }
+	.OP{
+      display: flex;
+      align-content: center;
+    } 
 
 	table{
       font-size: 12px;
@@ -90,7 +94,17 @@ ORDER BY usuarios.user_nick;
 	    <tr>
 	      <td class="text-center">
 	      	<img src="../panel/<?php echo $filas ['user_avatar'] ; ?>" alt="foto"><br>
-	      	<span class="nick"> <?php echo $filas ['user_dni'];?></span> 
+	      	<span class="nick"> <?php echo $filas ['user_dni'];?></span> <br>
+	      	<div class="OP">
+	      	<a href="crud_user/delete.php?id=<?php echo $filas ['id_user'];?>" class="btn btn-danger"> 
+        	<span class="icon-bin"></span>
+	    	   </a>
+	      	<a href="user_update2.php?id=<?php echo $filas ['id_user'];?>" class="btn btn-primary"> 
+	        EDITAR	
+	    	  </a>	
+
+	      	</div>
+
 
 	      <td>
 	      	   <span class="nick"> NICK:  <?php echo $filas ['user_nick'];?></span> <br>
@@ -112,10 +126,8 @@ ORDER BY usuarios.user_nick;
 	     <td>
 
 			<div class="container text-center ">
-        <a href="crud_user/delete.php?id=<?php echo $filas ['id_user'];?>" class="btn btn-danger"> 
-        	<span class="icon-bin"></span>
-	    	</a> 
-
+         
+				<div class="OP">
 	    	<?php if ($filas ['user_activo']=="si") {
         		?><a href="crud_user/activar.php?id=<?php echo $filas ['id_user'];?>&a=<?php echo $filas ['user_activo'];?>" class="btn btn-success"> 
 	            <?php echo $filas ['user_activo'];?>
@@ -130,6 +142,7 @@ ORDER BY usuarios.user_nick;
 	    	<a href="crud_user/nivel.php?id=<?php echo $filas ['id_user'];?>&a=<?php echo $filas ['user_perfil'];?>" class="btn btn-primary"> 
 	        <?php echo $filas ['user_perfil'];?>	
 	    	</a>
+        </div>
 
 	    	<?php if ($filas ['user_clave']!=123) {
         		?> <a href="crud_user/clave.php?id=<?php echo $filas ['id_user'];?>&a=<?php echo $filas ['user_clave'];?>" class="btn btn-success"> 
