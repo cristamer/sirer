@@ -9,12 +9,12 @@
 </style>
 
 <?php
-if (isset($_POST['user_nombre'])) {
+if (isset($_POST['user_dni'])) {
 	
-	$user = $_POST['user_nombre'];
+	$user = $_POST['user_dni'];
 	
 
-	$query="SELECT * FROM user WHERE user_nombre= '$user' ";
+	$query="SELECT * FROM user WHERE user_dni= '$user' ";
 	$result=mysqli_query($conexion, $query);
 	$numfilas = mysqli_num_rows($result);
 	
@@ -36,33 +36,42 @@ if (isset($_POST['user_nombre'])) {
 
 	
 
-	$c2 = $_POST['user_nombre'];
-	$c3 = $_POST['user_empresa'];
-	$c4 = $_POST['user_correo'];
-	$c5 = 1; /*$_POST['user_activo'];*/
-	$c6 = $_POST['user_clave'];
-	$c7 = 2; /*$_POST['user_nivel'];*/
-	$c8 = "./img/portada.jpg";/*$_POST['user_portada'];*/
-	$c9 = "./img/logo.jpg";/*$_POST['user_logo'];*/
+$c2 = $_POST['user_dni'];
+$c4 = $_POST['user_nombre'];
+$c5 = $_POST['user_nick'];
+$c6 = $_POST['user_telefono'];
+$c7 = $_POST['user_mail'];
+$c8 = $_POST['user_cargo'];
+$c9 = $_POST['user_clave'];
+$c10 = $_POST['user_perfil'];
+$c14 = $_POST['user_salario'];
+$c15 = $_POST['user_hingreso'];
+
 
 	$query= "INSERT INTO user(  
-	user_nombre,
-	user_empresa,
-	user_correo,
-	user_activo,
-	user_clave,
-	user_nivel,
-	user_portada,
-	user_logo
+user_dni,
+user_nombre,
+user_nick,
+user_telefono,
+user_mail,
+user_cargo,
+user_clave,
+user_perfil,
+user_salario,
+user_hingreso
+
 	) VALUES (
-	'$c2',
-	'$c3',
-	'$c4', 
-	'$c5', 
-	'$c6', 
-	'$c7',
-	'$c8',   
-	'$c9'
+'$c2',
+'$c4',
+'$c5',
+'$c6',
+'$c7',
+'$c8',
+'$c9',
+'$c10',
+'$c14',
+'$c15'
+
 	)";
 
 	/*---create ---*/
@@ -73,7 +82,7 @@ if (isset($_POST['user_nombre'])) {
 
 			<h5>Nuevo Usuario Registrado...</h5>
 	
-			<a href="./../index.php" class="btn btn-primary  btn-block" >INGRESAR...</a>		
+			<meta http-equiv="refresh" content="2;url=../user_listado.php" />		
 		</div>
 
 	<?php	

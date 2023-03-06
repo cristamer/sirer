@@ -51,7 +51,8 @@ filter: brightness(80%);
 
       <div class="menu mm">
         
-        
+        <a href="user_listado.php" class="btn btn-primary btn-lg btn-block">LISTADO USUARIOS</a>
+
         <a href="head_create_read.php" class="btn btn-primary btn-lg btn-block">PROGRAMAR</a>
 
         <a href="head_print.php" class="btn btn-primary btn-lg btn-block">RESUMEN</a>

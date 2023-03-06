@@ -1,4 +1,6 @@
 <?php include('includes/header.php'); ?>
+<?php include('includes/menubar.php'); ?>
+
 <link rel="stylesheet" href="stylos/stylos.css">
 <link rel="stylesheet" href="efectos.css">
 
@@ -16,25 +18,69 @@
 
 <form  action="crud_user/create.php" method="POST" class="colm">
   <div class="form-group" >
-    <label for="user_nombre">Nombre</label>
-    <input class="form-control" type="text" placeholder="Tu Nombre" id="user_nombre" name="user_nombre">
-    <small id="Help" class="form-text text-muted">Ingresa tu nombre.</small>
+  <label for="user_dni">DOCUMENTO - DNI</label>
+  <input class="form-control" type="text" placeholder="DNI" id="user_dni" name="user_dni" required>
   </div>
 
   <div class="form-group" >
-    <label for="user_correo">Correo Electronico</label>
-    <input class="form-control" type="email" placeholder="correo@email.com" id="user_correo" name="user_correo">
-    <small id="Help" class="form-text text-muted">Ingresa tu email.</small>
+    <label for="user_nombre">Nombre de Usuario</label>
+    <input class="form-control" type="text" placeholder="Nombre completo" id="user_nombre" name="user_nombre" required>
+
+  </div>
+  
+ <div class="form-group" >
+    <label for="user_nombre">Nick de Usuario</label>
+    <input class="form-control" type="text" placeholder="Nombre Corto" id="user_nombre" name="user_nombre" required>
+
+  </div>
+
+  <div class="form-group" >
+    <label for="user_cargo">Cargo Asignado</label>
+    <input class="form-control" type="text" placeholder="Cargo asignado" id="user_cargo" name="user_cargo" required>
+    
+  </div>
+
+    
+  <div class="form-group" >
+    <label for="user_perfil">Cargo Asignado</label>
+    <input class="form-control" type="number" placeholder="(1 Administrador) , (2 Conductor) ,(3 Ambos)" id="user_perfil" name="user_perfil" required>
+    
   </div>
 
   <div class="form-group" >
     <label for="user_clave">Contraseña</label>
-    <input class="form-control" type="text" placeholder="Tu Clave" id="user_clave" name="user_clave">
-    <small id="Help" class="form-text text-muted">Ingresa tu Clave de 8 digitos.</small>
+    <input class="form-control" type="text" placeholder="Clave asignada" id="user_clave" name="user_clave" required>
+    
+  </div> 
+
+  <div class="form-group" >
+    <label for=" user_salario ">Salario Diario Asignado</label>
+    <input class="form-control" type="number" placeholder="00.00 " id=" user_salario " name=" user_salario " required>
+    
+  </div> 
+
+  <div class="form-group" >
+    <label for=" user_hingreso ">HORA de Ingreso</label>
+    <input class="form-control" type="number" placeholder="00.00:00 " id=" user_hingreso " name=" user_hingreso " required>
+    
+  </div>  
+
+  <div class="form-group" >
+    <label for="user_telefono">Telefono</label>
+    <input class="form-control" type="number" placeholder="OPCIONAL" id="user_telefono" name="user_telefono">
+
+  </div>
+
+  <div class="form-group" >
+    <label for="user_correo">Correo Electronico</label>
+    <input class="form-control" type="email" placeholder="OPCIONAL" id="user_correo" name="user_correo">
+   
   </div>
 
 
-  <button type="submit" class="btn btn-primary" id="guardar" name="guardar">Crear Usuario</button>
+
+
+  <button type="submit" class="btn btn-primary" id="guardar" name="guardar">CREAR USUARIO</button>
 </form>
 
 

@@ -33,6 +33,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="asistencia.php">ASISTENCIA</a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="user_listado.php">REG. USUARIOS</a>
+      </li>
 
       <li class="nav-item active">
         <a class="nav-link" href="prog_histotico.php">HISTORICO</a>
