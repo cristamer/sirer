@@ -1,6 +1,6 @@
 <?php include('./../includes/header.php'); ?>
 
-<?php include("./../data/conexion.php"); ?>
+<?php include("./../../data/conexion.php"); ?>
 
 <style>
 	
@@ -14,7 +14,7 @@ if (isset($_POST['user_dni'])) {
 	$user = $_POST['user_dni'];
 	
 
-	$query="SELECT * FROM user WHERE user_dni= '$user' ";
+	$query="SELECT * FROM usuarios WHERE user_dni= $user ";
 	$result=mysqli_query($conexion, $query);
 	$numfilas = mysqli_num_rows($result);
 	
@@ -39,21 +39,21 @@ if (isset($_POST['user_dni'])) {
 $c2 = $_POST['user_dni'];
 $c4 = $_POST['user_nombre'];
 $c5 = $_POST['user_nick'];
-$c6 = $_POST['user_telefono'];
-$c7 = $_POST['user_mail'];
+
+
 $c8 = $_POST['user_cargo'];
-$c9 = $_POST['user_clave'];
+$c9 = 123;
 $c10 = $_POST['user_perfil'];
 $c14 = $_POST['user_salario'];
 $c15 = $_POST['user_hingreso'];
 
 
-	$query= "INSERT INTO user(  
+	$query= "INSERT INTO usuarios(  
 user_dni,
 user_nombre,
 user_nick,
-user_telefono,
-user_mail,
+
+
 user_cargo,
 user_clave,
 user_perfil,
@@ -64,8 +64,8 @@ user_hingreso
 '$c2',
 '$c4',
 '$c5',
-'$c6',
-'$c7',
+
+
 '$c8',
 '$c9',
 '$c10',

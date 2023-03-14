@@ -31,6 +31,16 @@ if (($_GET['s'])==0) {
   mysqli_query($conexion, $query);
 mysqli_close($conexion);
 
+
+  $query2 = "UPDATE asistencias set 
+  estado  = 'L' 
+  WHERE  id_empleado =$us";
+
+  mysqli_query($conexion, $query2);
+mysqli_close($conexion);
+
+
+
 echo'<script type="text/javascript">
     window.location.href="./../envio_fondos.php";
     </script>';

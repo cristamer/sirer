@@ -110,6 +110,12 @@ height: calc(1.8125rem + 10px);
     <div class="col-sm col-5 ">
       <a href="#ASUELDO" class="btn btn-block btn-success " data-toggle="modal">  ADELANTO     </a>
     </div>
+ <div class="col-sm col-5 ">
+      <a href="#ASUELDO" class="btn btn-block btn-warning " data-toggle="modal">  RESUMEN     </a>
+    </div>
+
+
+
         <div class="col-sm col-1">
       
     </div>
@@ -159,10 +165,13 @@ height: calc(1.8125rem + 10px);
           <?php
 
                $query="
-               SELECT usuarios.user_activo, usuarios.id_user, usuarios.user_avatar, usuarios.user_nombre, usuarios.user_nick, enviooy.SumaDeimporte AS enviooy, rsaldo.rsaldo, salario_xuser.SumaDesalario AS salario, ingreso_xuser.SumaDeimporte AS envios, egreso_xuser.SumaDeimporte AS egresos
+
+
+
+SELECT usuarios.user_activo, usuarios.id_user, usuarios.user_avatar, usuarios.user_nombre, usuarios.user_nick, enviooy.SumaDeimporte AS enviooy, rsaldo.rsaldo, salario_xuser.SumaDesalario AS salario, ingreso_xuser.SumaDeimporte AS envios, egreso_xuser.SumaDeimporte AS egresos
 FROM ((((usuarios LEFT JOIN enviooy ON usuarios.id_user = enviooy.id_responsable) LEFT JOIN rsaldo ON usuarios.id_user = rsaldo.id_responsable) LEFT JOIN salario_xuser ON usuarios.id_user = salario_xuser.id_responsable) LEFT JOIN ingreso_xuser ON usuarios.id_user = ingreso_xuser.id_responsable) LEFT JOIN egreso_xuser ON usuarios.id_user = egreso_xuser.id_responsable
-WHERE (((usuarios.user_activo)='si'))
-ORDER BY usuarios.user_nick;
+WHERE (((usuarios.user_activo)='si') AND ((ingreso_xuser.SumaDeimporte)>0))
+
 
 
               ";
@@ -256,7 +265,7 @@ ORDER BY usuarios.user_nick;
   <div class="form-group" >
   
   <label for="fecha_registro">Fecha</label>
-  <input type="date" class="form-control" id="fecha_registro" name="fecha_registro">
+  <input type="date" class="form-control" id="fecha_registro" name="fecha_registro" required>
 <br>
 
 
@@ -321,7 +330,7 @@ ORDER BY usuarios.user_nick;
   <div class="form-group" >
   
   <label for="fecha_registro">Fecha</label>
-  <input type="date" class="form-control" id="fecha_registro" name="fecha_registro">
+  <input type="date" class="form-control" id="fecha_registro" name="fecha_registro" required>
 <br>
 
 

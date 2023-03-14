@@ -69,6 +69,7 @@ ORDER BY ledger.id_ledger;
       <th scope="col">CONCEPTO</th>
       <th scope="col">RENDICIONES</th>
       <th scope="col">ADELANTOS</th>
+      
      </tr>
   </thead>
   <tbody>
@@ -76,10 +77,17 @@ ORDER BY ledger.id_ledger;
     <?php while($filasR=mysqli_fetch_assoc($resultR)) { ?>
 
     <tr>
-      <td class="text-center"><?php echo $filasR ['fecha_registro'];?></td>
+      
+
+      <td class="text-center">
+        <a href="crud_envio/delete.php?id=<?php echo $filasR ['id_ledger'];?>&us=<?php echo $us?>" class="btn btn-danger"> 
+          <span class="icon-bin"></span>
+           </a>  <br>      
+        <?php echo $filasR ['fecha_registro'];?></td>
       <td><?php echo $filasR ['concepto'];?> <br> <?php echo $filasR['observacion'];?></td>
       <td class="text-right"><?php echo $filasR ['importe'];?></td>
       <td class="text-right"><?php echo $filasR['salario'];?></td> 
+ 
     </tr>
 
 <?php }?>

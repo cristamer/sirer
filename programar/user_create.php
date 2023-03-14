@@ -29,8 +29,8 @@
   </div>
   
  <div class="form-group" >
-    <label for="user_nombre">Nick de Usuario</label>
-    <input class="form-control" type="text" placeholder="Nombre Corto" id="user_nombre" name="user_nombre" required>
+    <label for="user_nick">Nick de Usuario</label>
+    <input class="form-control" type="text" placeholder="Nombre Corto" id="user_nick" name="user_nick" required>
 
   </div>
 
@@ -42,40 +42,27 @@
 
     
   <div class="form-group" >
-    <label for="user_perfil">Cargo Asignado</label>
+    <label for="user_perfil">Nivel de Acceso</label>
     <input class="form-control" type="number" placeholder="(1 Administrador) , (2 Conductor) ,(3 Ambos)" id="user_perfil" name="user_perfil" required>
     
   </div>
 
+
+
   <div class="form-group" >
-    <label for="user_clave">Contraseña</label>
-    <input class="form-control" type="text" placeholder="Clave asignada" id="user_clave" name="user_clave" required>
+    <label for="user_salario">Salario Diario Asignado</label>
+    <input class="form-control" type="number" placeholder="00.00" id="user_salario" name="user_salario" required>
     
   </div> 
 
   <div class="form-group" >
-    <label for=" user_salario ">Salario Diario Asignado</label>
-    <input class="form-control" type="number" placeholder="00.00 " id=" user_salario " name=" user_salario " required>
-    
-  </div> 
-
-  <div class="form-group" >
-    <label for=" user_hingreso ">HORA de Ingreso</label>
-    <input class="form-control" type="number" placeholder="00.00:00 " id=" user_hingreso " name=" user_hingreso " required>
+    <label for="user_hingreso">HORA de Ingreso</label>
+    <input class="form-control" type="time" placeholder="00.00:00" id="user_hingreso" name="user_hingreso" required>
     
   </div>  
 
-  <div class="form-group" >
-    <label for="user_telefono">Telefono</label>
-    <input class="form-control" type="number" placeholder="OPCIONAL" id="user_telefono" name="user_telefono">
 
-  </div>
 
-  <div class="form-group" >
-    <label for="user_correo">Correo Electronico</label>
-    <input class="form-control" type="email" placeholder="OPCIONAL" id="user_correo" name="user_correo">
-   
-  </div>
 
 
 
