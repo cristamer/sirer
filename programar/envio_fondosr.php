@@ -15,33 +15,27 @@
 
 
 
+  
+  <style>
+
+    img {
+      border-radius: 50%;
+      height: 50px;
+      width: 50px;
+      margin-right: 10px;
+    }
+
+
   </style>
-
-
 
 <div class="card text-center">
   <div class="card-header text-center">
-    <span class="icon-truck"></span> <br>
-    <B> <h4 class="text-center"> ENTREGAS A RENDIR </h4> </B>
+    
+    <B> <h4 class="text-center"> RESUMEN  DE ENTREGAS A RENDIR </h4> </B>
   </div>
 
 </div>
 
-
-
-<form action="envio_fondosr.php" method="GET" class="colm">
-
-  <div class="form-group">
-    <label for="fecha">FECHA</label>
-    <input type="date" class="form-control" id="fecha" placeholder="">
-  </div>
-
-  <button type="submit" class="btn btn-primary">GENERAR</button>
-</form>
-
-<?php $F = $_GET['fecha']; ?>
-
-<?php echo $F  ?>
 
 
 
@@ -57,11 +51,13 @@
     <table id="example" class="table table-sm" width="100%">
       <thead class=" text-center">
         <tr>
-        <th scope="col">USUARIO</th>
-        <th scope="col">ENVIOS</th>
-        <th scope="col">ADEANTOS</th>
-        <th scope="col">GASTOS</th>
-        <th scope="col">SALDO</th>
+          <th scope="col">USUARIO</th>
+          <th scope="col">FECHA</th>
+        
+        <th scope="col">DETALLE</th>
+        <th scope="col">CONCEPTO</th>
+        <th scope="col">ENVIO</th>
+        <th scope="col">ADELANTO</th>
 
       
         </tr>
@@ -72,12 +68,10 @@
           <?php
 
                $query="
-
-
-
-SELECT usuarios.user_activo, usuarios.id_user, usuarios.user_avatar, usuarios.user_nombre, usuarios.user_nick, enviooy.SumaDeimporte AS enviooy, rsaldo.rsaldo, salario_xuser.SumaDesalario AS salario, ingreso_xuser.SumaDeimporte AS envios, egreso_xuser.SumaDeimporte AS egresos
-FROM ((((usuarios LEFT JOIN enviooy ON usuarios.id_user = enviooy.id_responsable) LEFT JOIN rsaldo ON usuarios.id_user = rsaldo.id_responsable) LEFT JOIN salario_xuser ON usuarios.id_user = salario_xuser.id_responsable) LEFT JOIN ingreso_xuser ON usuarios.id_user = ingreso_xuser.id_responsable) LEFT JOIN egreso_xuser ON usuarios.id_user = egreso_xuser.id_responsable
-WHERE (((usuarios.user_activo)='si') AND ((ingreso_xuser.SumaDeimporte)>0))
+SELECT ledger.tipo_dh, ledger.estado, ledger.fecha_registro, usuarios.id_user, usuarios.user_avatar, usuarios.user_nick, ledger.id_gls, ledger.observacion, rend_conceptos.concepto, ledger.importe, ledger.salario
+FROM (ledger INNER JOIN usuarios ON ledger.id_responsable = usuarios.id_user) INNER JOIN rend_conceptos ON ledger.id_concepto = rend_conceptos.id_concepto
+WHERE (((ledger.estado)='R'))
+ORDER BY ledger.fecha_registro;
 
 
 
@@ -90,18 +84,24 @@ WHERE (((usuarios.user_activo)='si') AND ((ingreso_xuser.SumaDeimporte)>0))
           <?php while($filas=mysqli_fetch_assoc($result)) { ?>
 <tr>
             
-            <td> <?php echo $filas ['user_nick']?> 
+
+            <td class="text-center"> 
+            <a href="envio_fondosxuser.php?us=<?php echo $filas['id_user']; ?>" >
+              <?php echo $filas ['user_nick']?> 
+        <img src="../panel/<?php echo $filas ['user_avatar'] ; ?>" alt="foto">
+        </a>
+            </td>
+            <td class="text-center"> <?php echo $filas ['fecha_registro']?> 
+            </td>
+            <td><?php echo $filas ['observacion']?> 
             </td>
 
-            <td><?php echo $filas ['envios']?> 
+            <td><?php echo $filas ['concepto']?> 
             </td>
 
-            <td><?php echo $filas ['salario']?> 
+            <td class="text-right"><?php echo $filas ['importe']?> 
             </td>
-
-            <td><?php echo $filas ['egresos']?> 
-            </td>
-            <td><?php echo $filas ['rsaldo']?> 
+            <td class="text-right" ><?php echo $filas ['salario']?> 
             </td>
 
 </tr>
@@ -122,6 +122,62 @@ WHERE (((usuarios.user_activo)='si') AND ((ingreso_xuser.SumaDeimporte)>0))
   </div>
 </div>
 </div> 
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm">
+     
+
+
+    <table id="example" class="table table-sm" width="100%">
+      <thead class=" text-center">
+        <tr>
+          <th scope="col">FECHA</th>
+        <th scope="col">TOTAL ENVIO</th>
+        <th scope="col">TOTAL ADELANTO</th>
+
+      
+        </tr>
+      </thead>
+  <tbody>
+
+          <?php
+               $queryT="
+SELECT ledger.fecha_registro, Sum(ledger.importe) AS SumaDeimporte, Sum(ledger.salario) AS SumaDesalario
+FROM ledger
+WHERE (((ledger.estado)='R'))
+GROUP BY ledger.fecha_registro;
+
+              ";
+           $resultT=mysqli_query($conexion, $queryT);
+
+          ?>
+          <?php while($filasT=mysqli_fetch_assoc($resultT)) { ?>
+<tr>
+            <td class="text-center"> <?php echo $filasT ['fecha_registro']?> 
+            </td>
+
+            <td class="text-right"> <?php echo $filasT ['SumaDeimporte']?> 
+            </td>
+            <td class="text-right"><?php echo $filasT ['SumaDesalario']?> 
+            </td>
+
+</tr>
+
+         <?php } ?>
+
+  </tbody>
+</table>
+
+
+
+    </div>
+
+  </div>
+</div>
+
+
 
 
 

@@ -100,25 +100,21 @@ height: calc(1.8125rem + 10px);
 
 <div class="container">
   <div class="row">
-    <div class="col-sm col-1">
+    
+    <div class="col-sm col-4 " >
+      <a href="#RENDIR" class="btn btn-block btn-primary " data-toggle="modal">  A-RENDIR     </a>
       
     </div>
-    <div class="col-sm col-5 ">
-      <a href="#RENDIR" class="btn btn-block btn-primary " data-toggle="modal">  A RENDIR     </a>
-      
-    </div>
-    <div class="col-sm col-5 ">
+    <div class="col-sm col-4 ">
       <a href="#ASUELDO" class="btn btn-block btn-success " data-toggle="modal">  ADELANTO     </a>
     </div>
- <div class="col-sm col-5 ">
-      <a href="#ASUELDO" class="btn btn-block btn-warning " data-toggle="modal">  RESUMEN     </a>
+ <div class="col-sm col-4">
+      <a href="envio_fondosr.php" class="btn btn-block btn-warning " >  RESUMEN     </a>
     </div>
 
 
 
-        <div class="col-sm col-1">
-      
-    </div>
+
   </div>
 </div>
 
@@ -377,7 +373,45 @@ ORDER BY usuarios.user_nick;
 
 
 
+ <!-- formulrio RESUMEN FILTROS-->
 
+
+<div class="modal" tabindex="-1" role="dialog" id="REPO">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">FILTROS - REPORTE</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+  
+<form  action="envio_reporte.php" method="POST" enctype="multipart/form-data" class="colm">
+
+<input class="form-control"  type="hidden" id="id_user" name="id_user" value="<?php echo $id_userup ; ?> " readonly>
+<input class="form-control"  type="hidden" id="fechacrea" name="fechacrea" value="<?php echo $hoy ; ?> " readonly>
+
+  <div class="form-group" >
+  
+  <label for="fecha_registro">Fecha</label>
+  <input type="date" class="form-control" id="fecha_registro" name="fecha_registro" required>
+<br>
+
+
+
+</div>
+
+
+      </div>
+      <div class="modal-footer">
+      <button type="submit" class="btn btn-success btn-lg btn-block" id="guardar" name="guardar">GENERAR </button>
+</form>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
